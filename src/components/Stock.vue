@@ -10,7 +10,14 @@
         </div>
         <div class="top-bar-right">
           <button class="btn btn-primary" @click="showModal = true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
@@ -23,13 +30,20 @@
         <!-- Filter Bar -->
         <div class="filter-bar">
           <div class="search-box">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <circle cx="11" cy="11" r="8"></circle>
               <path d="m21 21-4.35-4.35"></path>
             </svg>
-            <input v-model="searchQuery" type="text" placeholder="Search stock...">
+            <input v-model="searchQuery" type="text" placeholder="Search stock..." />
           </div>
-          
+
           <select v-model="selectedStatus" class="filter-select">
             <option value="">All Status</option>
             <option value="good">Good Stock</option>
@@ -68,7 +82,14 @@
                   </td>
                   <td>
                     <button class="btn-icon" @click="adjustStock(stock)">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                       </svg>
@@ -97,7 +118,7 @@
               <option v-for="stock in stockItems" :key="stock.id">{{ stock.item }}</option>
             </select>
           </div>
-          
+
           <div class="form-row">
             <div class="form-group">
               <label>Adjustment Type</label>
@@ -108,17 +129,23 @@
             </div>
             <div class="form-group">
               <label>Quantity</label>
-              <input v-model="form.quantity" type="number" min="1" required>
+              <input v-model="form.quantity" type="number" min="1" required />
             </div>
           </div>
-          
+
           <div class="form-group">
             <label>Reason</label>
-            <textarea v-model="form.reason" rows="3" placeholder="Enter reason for adjustment"></textarea>
+            <textarea
+              v-model="form.reason"
+              rows="3"
+              placeholder="Enter reason for adjustment"
+            ></textarea>
           </div>
-          
+
           <div class="modal-actions">
-            <button type="button" class="btn btn-secondary" @click="showModal = false">Cancel</button>
+            <button type="button" class="btn btn-secondary" @click="showModal = false">
+              Cancel
+            </button>
             <button type="submit" class="btn btn-primary">Save</button>
           </div>
         </form>
@@ -131,9 +158,9 @@
 import Sidebar from './Sidebar.vue'
 
 export default {
-  name: 'Stock',
+  name: 'StockPage',
   components: {
-    Sidebar
+    Sidebar,
   },
   data() {
     return {
@@ -144,26 +171,68 @@ export default {
         item: '',
         type: 'add',
         quantity: 1,
-        reason: ''
+        reason: '',
       },
       stockItems: [
-        { id: 1, item: 'Laptop Dell XPS 15', category: 'Electronics', current: 24, min: 10, status: 'good' },
-        { id: 2, item: 'Office Chair Pro', category: 'Furniture', current: 45, min: 20, status: 'good' },
-        { id: 3, item: 'Wireless Mouse', category: 'Electronics', current: 5, min: 10, status: 'low' },
-        { id: 4, item: 'Mechanical Keyboard', category: 'Electronics', current: 32, min: 15, status: 'good' },
-        { id: 5, item: '27" 4K Monitor', category: 'Electronics', current: 0, min: 5, status: 'out' },
-        { id: 6, item: 'Standing Desk', category: 'Furniture', current: 18, min: 10, status: 'good' }
-      ]
+        {
+          id: 1,
+          item: 'Laptop Dell XPS 15',
+          category: 'Electronics',
+          current: 24,
+          min: 10,
+          status: 'good',
+        },
+        {
+          id: 2,
+          item: 'Office Chair Pro',
+          category: 'Furniture',
+          current: 45,
+          min: 20,
+          status: 'good',
+        },
+        {
+          id: 3,
+          item: 'Wireless Mouse',
+          category: 'Electronics',
+          current: 5,
+          min: 10,
+          status: 'low',
+        },
+        {
+          id: 4,
+          item: 'Mechanical Keyboard',
+          category: 'Electronics',
+          current: 32,
+          min: 15,
+          status: 'good',
+        },
+        {
+          id: 5,
+          item: '27" 4K Monitor',
+          category: 'Electronics',
+          current: 0,
+          min: 5,
+          status: 'out',
+        },
+        {
+          id: 6,
+          item: 'Standing Desk',
+          category: 'Furniture',
+          current: 18,
+          min: 10,
+          status: 'good',
+        },
+      ],
     }
   },
   computed: {
     filteredStock() {
-      return this.stockItems.filter(stock => {
+      return this.stockItems.filter((stock) => {
         const matchesSearch = stock.item.toLowerCase().includes(this.searchQuery.toLowerCase())
         const matchesStatus = !this.selectedStatus || stock.status === this.selectedStatus
         return matchesSearch && matchesStatus
       })
-    }
+    },
   },
   methods: {
     adjustStock(stock) {
@@ -180,10 +249,10 @@ export default {
         item: '',
         type: 'add',
         quantity: 1,
-        reason: ''
+        reason: '',
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -1,6 +1,10 @@
 <template>
   <div class="app-container">
-    <Sidebar currentPage="dashboard" @navigate="$emit('navigate', $event)" @logout="$emit('logout')" />
+    <Sidebar
+      currentPage="dashboard"
+      @navigate="$emit('navigate', $event)"
+      @logout="$emit('logout')"
+    />
 
     <main class="main-content">
       <header class="top-bar">
@@ -24,8 +28,17 @@
         <div class="stats-grid">
           <div class="stat-card">
             <div class="stat-icon blue">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                ></path>
               </svg>
             </div>
             <div class="stat-content">
@@ -37,7 +50,14 @@
 
           <div class="stat-card">
             <div class="stat-icon green">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
                 <line x1="12" y1="1" x2="12" y2="23"></line>
                 <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
               </svg>
@@ -51,7 +71,14 @@
 
           <div class="stat-card">
             <div class="stat-icon purple">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
                 <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"></path>
               </svg>
             </div>
@@ -64,7 +91,14 @@
 
           <div class="stat-card">
             <div class="stat-icon orange">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
                 <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
               </svg>
             </div>
@@ -113,17 +147,43 @@
             <div class="alert-list">
               <div v-for="alert in stockAlerts" :key="alert.id" :class="['alert-item', alert.type]">
                 <div class="alert-icon">
-                  <svg v-if="alert.type === 'warning'" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <svg
+                    v-if="alert.type === 'warning'"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                    ></path>
                     <line x1="12" y1="9" x2="12" y2="13"></line>
                     <line x1="12" y1="17" x2="12.01" y2="17"></line>
                   </svg>
-                  <svg v-else-if="alert.type === 'danger'" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg
+                    v-else-if="alert.type === 'danger'"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="12" y1="8" x2="12" y2="12"></line>
                     <line x1="12" y1="16" x2="12.01" y2="16"></line>
                   </svg>
-                  <svg v-else-if="alert.type === 'success'" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg
+                    v-else-if="alert.type === 'success'"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                 </div>
@@ -144,9 +204,9 @@
 import Sidebar from './Sidebar.vue'
 
 export default {
-  name: 'Dashboard',
+  name: 'DashboardPage',
   components: {
-    Sidebar
+    Sidebar,
   },
   data() {
     return {
@@ -154,22 +214,42 @@ export default {
         totalItems: 1248,
         totalSales: '45,692',
         categories: 24,
-        lowStock: 18
+        lowStock: 18,
       },
       recentSales: [
-        { id: 1, item: 'Laptop Dell XPS 15', quantity: 2, price: 2399.00, date: 'Jan 12, 2026' },
-        { id: 2, item: 'Office Chair Pro', quantity: 5, price: 1245.00, date: 'Jan 12, 2026' },
-        { id: 3, item: 'Wireless Mouse', quantity: 12, price: 348.00, date: 'Jan 11, 2026' },
-        { id: 4, item: 'USB-C Hub', quantity: 8, price: 392.00, date: 'Jan 11, 2026' }
+        { id: 1, item: 'Laptop Dell XPS 15', quantity: 2, price: 2399.0, date: 'Jan 12, 2026' },
+        { id: 2, item: 'Office Chair Pro', quantity: 5, price: 1245.0, date: 'Jan 12, 2026' },
+        { id: 3, item: 'Wireless Mouse', quantity: 12, price: 348.0, date: 'Jan 11, 2026' },
+        { id: 4, item: 'USB-C Hub', quantity: 8, price: 392.0, date: 'Jan 11, 2026' },
       ],
       stockAlerts: [
-        { id: 1, type: 'warning', title: 'Low Stock: Wireless Keyboard', message: 'Only 5 units remaining' },
-        { id: 2, type: 'warning', title: 'Low Stock: Monitor Stand', message: 'Only 3 units remaining' },
-        { id: 3, type: 'danger', title: 'Expiring Soon: Printer Ink', message: 'Expires on Jan 20, 2026' },
-        { id: 4, type: 'success', title: 'Stock Replenished: USB Cables', message: '50 units added to inventory' }
-      ]
+        {
+          id: 1,
+          type: 'warning',
+          title: 'Low Stock: Wireless Keyboard',
+          message: 'Only 5 units remaining',
+        },
+        {
+          id: 2,
+          type: 'warning',
+          title: 'Low Stock: Monitor Stand',
+          message: 'Only 3 units remaining',
+        },
+        {
+          id: 3,
+          type: 'danger',
+          title: 'Expiring Soon: Printer Ink',
+          message: 'Expires on Jan 20, 2026',
+        },
+        {
+          id: 4,
+          type: 'success',
+          title: 'Stock Replenished: USB Cables',
+          message: '50 units added to inventory',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 
